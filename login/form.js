@@ -18,10 +18,10 @@ email.onblur = function() {
         emailError.textContent = 'Email format not supported'
         email.classList.add('invalid')
     }
-    // else if(content.includes("eve.holt@reqres.in")=== false) {
-    //     emailError.textContent = 'User not found'
-    //     email.classList.add('invalid')
-    // }
+    else if(content.includes("eve.holt@reqres.in")=== false) {
+        emailError.textContent = 'Invalid Email'
+        email.classList.add('invalid')
+    }
 
     // else if ( pwordText.includes("cityslicka")=== false) {
     //     pwordError.textContent = 'Invalid password'
@@ -39,10 +39,11 @@ email.onfocus = function() {
 
 //password validation
 let password = pwordInput.value
-pwordInput.onblur = function(event) {
-    let pass = event.target.value;
+pwordInput.onblur = function() {
+    let pass = pwordInput.value;
     if (pass.length < 8)    {
         pwordError.textContent = "minimum password length is 8 characters";
+        pwordInput.classList.add('invalid');
     }
 }
 pwordInput.onfocus = function() {
@@ -69,15 +70,21 @@ pwordInput.onfocus = function() {
     })
     .then((res) => res.json())
     .then(res => {
-        if(res.error)   {
-            return submitError.textContent = res.error
+        if(res.token)   {
+            
+        submitError.textContent = 'Login Successful';
+            window.open('/index.html');
+        }else {
+            return(submitError.textContent = "User not found" )
         }
         console.log(res)
-        submitError.textContent = 'Login Successful';
+        // console.log(res)
     }).catch((e) => console.log(e))
  }
  
  btn.addEventListener('click', validateDetails)
+
+ //Validate Correct answer
 
 
  
