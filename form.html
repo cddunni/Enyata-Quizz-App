@@ -19,29 +19,48 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
 </head>
 <body>
-  <div class="content">
-    <header class="login">Login Form</header>
-    <form action="" id="form">
-      <div class="field email">
-        <div class="input-area">
-          <input type="email" placeholder="Email Address" class="email-input" value="">
-         
-        </div>
-        <span class="what"></span>
+  <div class="container">
+    <div class='image'>
+      <!-- <h1 class='header'>EVALUO</h1> -->
+    </div>
+    <div class="content">
+      <div class='title'>
+        <p class='submitError'></p>
+       <h1 class="logo">Qu<span>iz</span>z<span>y</span></h1> 
+        <p>Easy and intuitive online testing</p>
+      <h1>Welcome Back!</h1>
       </div>
-      <div class="field password">
-        <div class="input-area">
-          <input type="password" placeholder="Password">
-          
+      <!-- <header class="login">Login Form</header> -->
+      <form action="" id="form">
+        <!-- <h2>Login</h2> -->
+        <div class="field">
+              <div class="input-area">
+                <input type="email" placeholder="Email Address" class="email" value="">
+              </div>
+              <span class="what"></span>
         </div>
-      </div>
-      <div class="pass-txt"><a href="#">Forgot password?</a></div>
-      <button class="login" ><a href="./index.html">Login</a></button>
-    </form>
-    <div class="sign-txt">Not yet member? <a href="#">Signup now</a></div>
+        <div class="field">
+          <div class="input-area">
+            <input type="password" placeholder="Password" class="password">
+          </div>
+          <p class='whatp'></p>
+        </div>
+        <div class="pass-txt">
+          <div class='checky'>
+          <input type="checkbox" checked="checked" class="checkbox">
+          <label class="container">Remember me
+          <span class="checkmark"></span>
+          </label>
+          </div>
+          <a href="#">Forgot password?</a>
+        </div>
+        <button class="login-btn" ><a href="index.html">Login</a></button>
+      <div class="sign-txt">Not yet member? <a href="#">Signup now</a></div>
+      
+      </form>
+    </div>
   </div>
-
-  <script src="style.js"></script>
+  <script src="form.js"></script>
 </body>
 </html>
 </body>

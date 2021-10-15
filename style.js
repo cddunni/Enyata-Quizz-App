@@ -1,12 +1,12 @@
 const quiz = document.querySelector('.question');
-const option = document.querySelector('.options');
+const options = document.querySelector('.options');
 const skip = document.querySelector('#skip');
 const next = document.querySelector('#next');
+const questionElement = document.querySelector('#quest')
 
 
-const questions = [
+const quizQuestions = [
     {
-		 id: 1,
 		question :  'What should values always be enclosed in?',
 		options : 
 			{
@@ -15,62 +15,87 @@ const questions = [
 			 c:"&lt;scripting&gt", 
 			 d:"Parenthesis"
 			},
-		answer:"Commas"
+			correctAnswer:"Commas"
 	},
 	{
-		id: 1,
-	   question :  'What should values always be enclosed in?',
-	   options : 
+		question: "What year was JavaScript launched?",
+	   	options : 
 		   {
-			a: "Commas", 
-			b:"Quotation marks", 
-			c:"&lt;scripting&gt", 
-			d:"Parenthesis"
+			a:"1997",
+			b: "2001",
+			c: "none of the above",
 		   },
-	   answer:"Commas"
+		   correctAnswer:"none of the above"
    },
    {
-		id: 1,
-		question :  'What should values always be enclosed in?',
+		question: "What was the most used programming language in 2019?",
 		options : 
 		{
-			a: "Commas", 
-			b:"Quotation marks", 
-			c:"&lt;scripting&gt", 
-			d:"Parenthesis"
+			a: "Python",
+			b: "JavaScript",
+			c: "C#",
+			d: "C++"
 		},
-		answer:"Commas",
+		correctAnswer:"Javavscript",
 	},
 	{
-		id: 1,
-   		question :  'What should values always be enclosed in?',
+   		question :  'Which of the following is not a CSS framework',
    		options : 
 	   	{
-			a: "Commas", 
-			b:"Quotation marks", 
-			c:"&lt;scripting&gt", 
-			d:"Parenthesis"
+			a: "Bootstrap", 
+			b:"Tailwind CSS", 
+			c:"SCSS", 
+			d:"Material UI"
 	   	},
-  		answer:"Commas"
+  		correctAnswer:"SCSS"
 	},
  ] 
 
-
 //function build the quiz
+
+let currentQuestion = quizQuestions[0];
 
 
 const showQuestion = () => {
-	const output = [];
-	const answer = '';
 
-	//loop through questions
-	questions.forEach((question, number) => {
+	questionElement.innerText = currentQuestion.question
+		let answers = ''
+		for(let option in currentQuestion.options)	{		
 		//add radio button
-		answers.push(
-			`<label>
-				<input type="radio" name="question${number}" value="${}
-			</label>`
-		)
-	})
+		// console.log(option)
+		// console.log(currentQuestion.options[option])
+		answers+=
+			`<li class='answers'>
+				<label>
+					<input type="radio" value="options" name="quest">
+					${option}:
+					${currentQuestion.options[option]}
+				</label>
+			</li>`
+		}
+		options.innerHTML = answers
+}
 
-} 
+showQuestion();
+
+//next button
+
+const nextQuestion = () => {
+	const previousIndex = quizQuestions.indexOf(currentQuestion);
+	if (previousIndex == quizQuestions.length - 1) return;
+	currentQuestion = quizQuestions[previousIndex + 1]
+	showQuestion();
+	console.log(previousIndex);
+}
+next.addEventListener('click', nextQuestion);
+
+const prevQuestion = () => {
+	const previousIndex = quizQuestions.indexOf(currentQuestion);
+	if (previousIndex == 0) return;
+	currentQuestion = quizQuestions[previousIndex - 1];
+	showQuestion();
+	console.log(previousIndex);
+}
+prev.addEventListener('click', prevQuestion);
+
+
